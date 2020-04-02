@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @ConfigurationProperties(prefix = "spring.data.mongodb.test3")
 public class Test3MongoConfig extends AbstractMongoConfig{
 
-    @Primary
     @Override
     public @Bean(name = "test3MongoTemplate") MongoTemplate getMongoTemplate() {
         return new MongoTemplate(createFactory());

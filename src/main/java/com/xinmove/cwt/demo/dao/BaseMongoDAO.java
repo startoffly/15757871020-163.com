@@ -14,7 +14,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return int 返回类型
 	 */
-	int add(T t) throws Exception;
+	int add(T t);
 	
 	/**
 	 * @Title: add 
@@ -23,7 +23,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return int 返回类型
 	 */
-	int add(List<T> list) throws Exception;
+	int add(List<T> list) ;
 	
 	/**
 	 * @Title: delete 
@@ -32,7 +32,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return int 返回类型
 	 */
-	int delete(T t) throws Exception;
+	int delete(T t);
 	
 	/**
 	 * @Title: update 
@@ -41,7 +41,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return int 返回类型
 	 */
-	T update(T t) throws Exception;
+	T update(T t);
 	
 	/**
 	 * @Title: update 
@@ -52,7 +52,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @throws ZhiWeiException 设定文件 
 	 * @return int 返回类型
 	 */
-	int update(Query query, Update update) throws Exception;
+	int update(Query query, Update update);
 	
 	/**
 	 * @Title: findOne 
@@ -61,7 +61,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return T 返回类型
 	 */
-	T findOne(String id) throws Exception;
+	T findOne(String id);
 	
 	/***
 	 * @Title: find 
@@ -70,7 +70,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return List<T> 返回类型
 	 */
-	List<T> find(Query query) throws Exception;
+	List<T> find(Query query);
 	
 	/**
 	 * @Title: findOne 
@@ -80,7 +80,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @throws ZhiWeiException 设定文件 
 	 * @return T 返回类型
 	 */
-	T findOne(Query query) throws Exception;
+	T findOne(Query query);
 	
 	/**
 	 * @Title: count 
@@ -89,7 +89,7 @@ public interface BaseMongoDAO<T> {
 	 * @param @return 设定文件 
 	 * @return long 返回类型
 	 */
-	long count(Query query) throws Exception;
+	long count(Query query);
 
-    int delete(Query query) throws Exception;
+    int delete(Query query);
 }

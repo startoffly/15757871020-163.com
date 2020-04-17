@@ -25,33 +25,35 @@ import java.util.List;
 public class StudentTest23DAOImpl implements StudentTest23DAO {
     private static Logger log = LogManager.getLogger(StudentTest23DAOImpl.class);
 
-    @Autowired
-    @Qualifier(value = "test2MongoTemplate")
-    private MongoTemplate test2MongoTemplate;
+    //与方法一实现等同
+    private final MongoTemplate test2MongoTemplate;
 
-    @Autowired
-    @Qualifier(value = "test3MongoTemplate")
-    private MongoTemplate test3MongoTemplate;
+    private final MongoTemplate test3MongoTemplate;
+
+    public StudentTest23DAOImpl(@Qualifier(value = "test2MongoTemplate") MongoTemplate test2MongoTemplate, @Qualifier(value = "test3MongoTemplate") MongoTemplate test3MongoTemplate) {
+        this.test2MongoTemplate = test2MongoTemplate;
+        this.test3MongoTemplate = test3MongoTemplate;
+    }
 
     @Override
-    public int add2(StudentTest2 t) throws Exception {
+    public int add2(StudentTest2 t) {
         test2MongoTemplate.insert(t);
         return 1;
     }
 
     @Override
-    public int add2to3(StudentTest2 t) throws Exception {
+    public int add2to3(StudentTest2 t) {
         test3MongoTemplate.insert(t);
         return 1;
     }
 
     @Override
-    public int add3(StudentTest3 t) throws Exception {
+    public int add3(StudentTest3 t) {
         test3MongoTemplate.insert(t);
         return 1;
     }
     @Override
-    public int add3to2(StudentTest3 t) throws Exception {
+    public int add3to2(StudentTest3 t) {
         test2MongoTemplate.insert(t);
         return 1;
     }

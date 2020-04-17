@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
+import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 /**
  * @Auther: CWT
@@ -15,7 +19,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class Test3MongoConfig extends AbstractMongoConfig{
 
     @Override
-    public @Bean(name = "test3MongoTemplate") MongoTemplate getMongoTemplate() {
-        return new MongoTemplate(createFactory());
+    public @Bean(name = "test3MongoTemplate") MongoTemplate getMongoTemplate(MongoMappingContext context) {
+        //去除_class
+        MappingMongoConverter converter = new MappingMongoConverter(new DefaultDbRefResolver(createFactory()), context);
+        converter.setTypeMapper(new DefaultMongoTypeMapper(null));
+        return new MongoTemplate(createFactory(), converter);
     }
 }

@@ -27,56 +27,56 @@ public class StudentTest1DAOImpl implements StudentTest1DAO {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public int add(Student t) throws Exception {
+    public int add(Student t) {
         mongoTemplate.insert(t);
         return 1;
     }
 
     @Override
-    public int add(List<Student> list) throws Exception {
+    public int add(List<Student> list) {
         mongoTemplate.insertAll(list);
         return 1;
     }
 
     @Override
-    public int delete(Student t) throws Exception {
+    public int delete(Student t) {
         mongoTemplate.remove(t);
         return 1;
     }
 
     @Override
-    public Student update(Student t) throws Exception {
+    public Student update(Student t) {
         return mongoTemplate.save(t);
     }
 
     @Override
-    public Student findOne(String id) throws Exception {
+    public Student findOne(String id) {
         return mongoTemplate.findById(id, Student.class);
     }
 
     @Override
-    public List<Student> find(Query query) throws Exception {
+    public List<Student> find(Query query) {
         return mongoTemplate.find(query, Student.class);
     }
 
     @Override
-    public long count(Query query) throws Exception {
+    public long count(Query query) {
         return mongoTemplate.count(query, Student.class);
     }
 
     @Override
-    public Student findOne(Query query) throws Exception {
+    public Student findOne(Query query) {
         return mongoTemplate.findOne(query, Student.class);
     }
 
     @Override
-    public int update(Query query, Update update) throws Exception {
+    public int update(Query query, Update update) {
         mongoTemplate.updateMulti(query, update, Student.class);
         return 1;
     }
 
     @Override
-    public int delete(Query query) throws Exception {
+    public int delete(Query query) {
         return (int)mongoTemplate.remove(query, Student.class).getDeletedCount();
     }
 }

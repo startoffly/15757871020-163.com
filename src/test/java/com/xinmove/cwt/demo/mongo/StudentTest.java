@@ -7,6 +7,10 @@ import com.xinmove.cwt.demo.entry.Student;
 import com.xinmove.cwt.demo.entry.StudentTest2;
 import com.xinmove.cwt.demo.entry.StudentTest3;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
@@ -15,17 +19,22 @@ import javax.annotation.Resource;
  * @Date: 2020/4/1 18:22
  * @Description:
  */
-public class StudentTest extends SpringBootMongosDemoApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class StudentTest{
 
     @Resource
     StudentTest1DAO studentTest1DAO;
     @Resource
     StudentTest23DAO studentTest23DAO;
+
+
+
     @Test
     public void test1T(){
 
         Student student = new Student();
-        student.setId("6");
+        student.setId("7");
         student.setName("测试同学");
         student.setLevel("A");
         try {
@@ -33,6 +42,7 @@ public class StudentTest extends SpringBootMongosDemoApplicationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @Test
@@ -63,5 +73,10 @@ public class StudentTest extends SpringBootMongosDemoApplicationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testFind(){
+        studentTest1DAO.find(new Query()).forEach(System.out::println);
     }
 }
